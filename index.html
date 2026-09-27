@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ارتقاء الطالب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <span class="brand-mark">🎓</span>
+        <span class="brand-name">ارتقاء الطالب</span>
+      </div>
+      <nav class="nav">
+        <a href="#home" class="nav-link active" data-target="home">الرئيسية</a>
+        <a href="#issues" class="nav-link" data-target="issues">المشاكل والاقتراحات</a>
+        <a href="#projects" class="nav-link" data-target="projects">المشاريع</a>
+        <a href="#tips" class="nav-link" data-target="tips">نصائح</a>
+        <a href="#announcements" class="nav-link" data-target="announcements">الإعلانات</a>
+        <a href="#tools" class="nav-link" data-target="tools">غرفة التركيز</a>
+      </nav>
+    </div>
+    <div class="wrap search-bar-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input id="global-search" type="text" placeholder="ابحث عن مشروع، ملاحظة، أو إعلان...">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="view active">
+      <div class="wrap hero">
+        <p class="eyebrow">✨ منصة الطلاب</p>
+        <h1>صوتك يوصل، <span class="accent-line">وأفكارك تُبنى هنا.</span></h1>
+        <p class="lede">مكان واحد يجمع ملاحظات الطلاب على المدرسة، ومشاريعهم اللي شغالين عليها. اكتب اللي يزعجك، أو اعرض اللي فخور فيه.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-goto="issues">أرسل ملاحظة</button>
+          <button class="btn btn-ghost" data-goto="projects">شوف المشاريع</button>
+        </div>
+      </div>
+
+      <div class="wrap stats-row">
+        <div class="stat">
+          <span class="stat-num" id="stat-issues">0</span>
+          <span class="stat-label">ملاحظة مسجّلة</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="stat-projects">0</span>
+          <span class="stat-label">مشروع منشور</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">من عندكم انتم</span>
+        </div>
+      </div>
+
+      <div class="wrap quick-links">
+        <h2>وين تبي تروح؟</h2>
+        <div class="quick-grid">
+          <div class="quick-card" data-goto="issues">
+            <div class="quick-icon orange">📢</div>
+            <h3>المشاكل والاقتراحات</h3>
+            <p>اكتب اللي يضايقك أو اقتراح يحسّن المدرسة</p>
+          </div>
+          <div class="quick-card" data-goto="projects">
+            <div class="quick-icon blue">🚀</div>
+            <h3>المشاريع</h3>
+            <p>شوف مشاريع زملائك أو انشر مشروعك</p>
+          </div>
+          <div class="quick-card" data-goto="tips">
+            <div class="quick-icon" style="background:var(--purple-bg)">💡</div>
+            <h3>نصائح وإرشادات</h3>
+            <p>أدلة عملية لكل جانب من حياتك المدرسية</p>
+          </div>
+          <div class="quick-card" data-goto="announcements">
+            <div class="quick-icon pink">📌</div>
+            <h3>الإعلانات</h3>
+            <p>آخر أخبار وفعاليات المدرسة</p>
+          </div>
+          <div class="quick-card" data-goto="tools">
+            <div class="quick-icon teal">⏱️</div>
+            <h3>غرفة التركيز</h3>
+            <p>مؤقت بومودورو يساعدك تذاكر بتركيز</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap pulse-block">
+        <div class="pulse-head">
+          <h2>نبض المدرسة اليوم</h2>
+          <p class="section-sub">كيف مزاجك اليوم؟ صوّتك يضيف للرسم مباشرة.</p>
+        </div>
+        <div class="pulse-votes" id="pulse-votes">
+          <button class="pulse-btn" data-mood="رايق">😄<span>رايق</span></button>
+          <button class="pulse-btn" data-mood="عادي">😐<span>عادي</span></button>
+          <button class="pulse-btn" data-mood="متعب">😩<span>متعب</span></button>
+          <button class="pulse-btn" data-mood="مضغوط">🤯<span>مضغوط</span></button>
+        </div>
+        <div class="pulse-bars" id="pulse-bars"></div>
+      </div>
+    </section>
+
+    <section id="issues" class="view">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>المشاكل والاقتراحات</h2>
+          <p class="section-sub">اكتب أي شي يضايقك في المدرسة أو اقتراح تشوفه يحسّن الوضع. ما يحتاج تكتب اسمك.</p>
+        </div>
+
+        <form id="issue-form" class="panel">
+          <div class="field-row">
+            <label for="issue-type">النوع</label>
+            <select id="issue-type">
+              <option value="مشكلة">مشكلة</option>
+              <option value="اقتراح">اقتراح</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <label for="issue-text">التفاصيل</label>
+            <textarea id="issue-text" placeholder="اكتب هنا..." rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">إرسال</button>
+        </form>
+
+        <ul id="issue-list" class="entry-list"></ul>
+        <p id="issue-empty" class="empty-note">ما فيه ملاحظات لحد الحين. كن أول واحد يكتب.</p>
+      </div>
+    </section>
+
+    <section id="projects" class="view">
+      <div class="wrap">
+        <div class="section-head with-action">
+          <div>
+            <h2>المشاريع</h2>
+            <p class="section-sub">مشاريع الطلاب — برمجة، روبوتات، أبحاث، تصميم، أي شي تشتغلون عليه.</p>
+          </div>
+          <button class="btn btn-primary" id="open-project-form">+ أضف مشروع</button>
+        </div>
+
+        <div class="filter-row" id="project-filters">
+          <button class="filter-chip active" data-tag="الكل">الكل</button>
+        </div>
+
+        <form id="project-form" class="panel hidden">
+          <div class="field-row">
+            <label for="project-title">اسم المشروع</label>
+            <input id="project-title" type="text" placeholder="مثال: روبوت متتبع خط" required>
+          </div>
+          <div class="field-row">
+            <label for="project-author">اسم صاحب المشروع</label>
+            <input id="project-author" type="text" placeholder="اسمك">
+          </div>
+          <div class="field-row">
+            <label for="project-desc">وصف قصير</label>
+            <textarea id="project-desc" rows="2" placeholder="عن إيش المشروع؟" required></textarea>
+          </div>
+          <div class="field-row">
+            <label for="project-tag">التصنيف</label>
+            <input id="project-tag" type="text" placeholder="برمجة / روبوتات / تصميم ...">
+          </div>
+          <button type="submit" class="btn btn-primary">نشر المشروع</button>
+        </form>
+
+        <div id="project-grid" class="project-grid"></div>
+        <p id="project-empty" class="empty-note">ما فيه مشاريع لحد الحين. أضف أول مشروع!</p>
+      </div>
+    </section>
+
+    <section id="tips" class="view">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>نصائح وإرشادات</h2>
+          <p class="section-sub">أدلة عملية لكل جانب من حياتك المدرسية. اختر مجال وشوف أهم النصائح فيه.</p>
+        </div>
+
+        <div class="tips-grid" id="tips-grid"></div>
+        <div class="tips-panel" id="tips-panel"></div>
+
+        <div class="section-head" style="margin-top:56px;">
+          <h2>مواقف شائعة وحلول لها</h2>
+          <p class="section-sub">مواقف يمر فيها كثير من الطلاب، مع خطوات عملية تساعدك تتعامل معها.</p>
+        </div>
+        <div class="spotlight-grid" id="spotlight-grid"></div>
+      </div>
+    </section>
+
+    <section id="announcements" class="view">
+      <div class="wrap">
+        <div class="section-head with-action">
+          <div>
+            <h2>الإعلانات</h2>
+            <p class="section-sub">إعلانات المدرسة والفعاليات. ثبّت المهم منها بأعلى القائمة.</p>
+          </div>
+          <button class="btn btn-primary" id="open-announcement-form">+ إعلان جديد</button>
+        </div>
+
+        <form id="announcement-form" class="panel hidden">
+          <div class="field-row">
+            <label for="ann-title">العنوان</label>
+            <input id="ann-title" type="text" placeholder="مثال: اختبار الرياضيات مؤجل" required>
+          </div>
+          <div class="field-row">
+            <label for="ann-body">التفاصيل</label>
+            <textarea id="ann-body" rows="2" required></textarea>
+          </div>
+          <div class="field-row pin-row">
+            <label class="checkbox-label">
+              <input id="ann-pin" type="checkbox">
+              ثبّت هذا الإعلان بالأعلى
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">نشر</button>
+        </form>
+
+        <div id="announcement-list" class="entry-list"></div>
+        <p id="announcement-empty" class="empty-note">ما فيه إعلانات لحد الحين.</p>
+      </div>
+    </section>
+
+    <section id="tools" class="view">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>غرفة التركيز</h2>
+          <p class="section-sub">مؤقت بومودورو للمذاكرة: ٢٥ دقيقة تركيز، ٥ دقائق راحة.</p>
+        </div>
+
+        <div class="focus-panel">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 200 200" class="ring-svg">
+              <defs>
+                <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#17b99a"/>
+                  <stop offset="100%" stop-color="#2f8fe0"/>
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="100" r="88" class="ring-track"></circle>
+              <circle cx="100" cy="100" r="88" class="ring-progress" id="ring-progress"></circle>
+            </svg>
+            <div class="ring-center">
+              <span id="timer-display">25:00</span>
+              <span id="timer-phase" class="phase-label">تركيز</span>
+            </div>
+          </div>
+          <div class="focus-actions">
+            <button class="btn btn-primary" id="timer-toggle">ابدأ</button>
+            <button class="btn btn-ghost" id="timer-reset">تصفير</button>
+          </div>
+          <p class="session-count">الجلسة رقم <span id="session-num">1</span></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>يتم حفظ البيانات في هذا المتصفح فقط — عدّل الكود حسب حاجتك.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
